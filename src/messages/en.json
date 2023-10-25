@@ -1,0 +1,24 @@
+{
+  "Header" : {
+    "logo": "biletiki"
+  },
+  "Footer" : {
+    "copyright": "Copyright © 2023 MIT License. |",
+    "source": "The source code of this site is available in the public domain and is distributed free of charge on <link>GitHub</link>.",
+    "developer": "Design and development by <link>Yury Uvarov</link>."
+  },
+  "Github": {
+    "title": "GitHub",
+    "url": "https://github.com/uvarov-frontend/biletiki.store"
+  },
+  "HomePage": {
+    "head": {
+      "title": "Biletiki | Buy cheap airline tickets online",
+      "description": "We will help you find and buy the cheapest air tickets. Search for plane tickets on 2000 airlines, leading ticket offices and the best prices on airline tickets."
+    }
+  },
+  "NotFoundPage": {
+    "title": "404 Not Found",
+    "description": "You've come to the non-existent page."
+  }
+}
