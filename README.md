@@ -10,5 +10,6 @@ This is a demonstration project for the [vanilla-calendar](https://github.com/uv
 
 - Next.js
 - React
+- Next-intl
 - TypeScript
 - Tailwind CSS

@@ -1,11 +1,12 @@
-import { useTranslations } from 'next-intl';
+import { getTranslator } from 'next-intl/server';
 
 import { menuFooter } from '@/bd';
 import { Locale } from '@/types';
 
-export default function Footer({ locale }: { locale: Locale }) {
-  const t = useTranslations('Footer');
-  const githubUrl = useTranslations('Github')('url');
+export default async function Footer({ locale }: { locale: Locale }) {
+  const t = await getTranslator(locale, 'Footer');
+  const github = await getTranslator(locale, 'Github');
+
   return (
     <footer className="bg-white">
       <nav className="container mx-auto grid grid-cols-5 py-10">
@@ -43,7 +44,7 @@ export default function Footer({ locale }: { locale: Locale }) {
             <br />
             {t.rich('source', {
               link: (source) => (
-                <a className="text-[#0c73fe] hover:text-[#ff6f32]" href={githubUrl} rel="noreferrer" target="_blank">
+                <a className="text-[#0c73fe] hover:text-[#ff6f32]" href={github('url')} rel="noreferrer" target="_blank">
                   {source}
                 </a>
               ),
