@@ -26,8 +26,8 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.KEY }}
           script: |
-            pm2 stop biletiki.store
+            pm2 stop biletiki
             cd ${{ secrets.TARGET }}
             yarn install
             yarn build
-            pm2 start biletiki.store
+            pm2 start biletiki
