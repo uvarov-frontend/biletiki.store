@@ -17,3 +17,17 @@ jobs:
           key: ${{ secrets.KEY }}
           source: "."
           target: ${{ secrets.TARGET }}
+
+      - name: Build app
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY }}
+          script: |
+            pm2 stop biletiki.store
+            cd ${{ secrets.TARGET }}
+            yarn install
+            yarn build
+            pm2 start biletiki.store
