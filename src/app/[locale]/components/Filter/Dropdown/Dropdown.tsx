@@ -49,7 +49,7 @@ export default function Dropdown({ placeholder, peoples, levels }: { placeholder
       <span className="absolute -top-5 left-4 h-5 text-[0.5625rem] font-semibold uppercase text-white">{placeholder}</span>
       <button
         type="button"
-        className={`flex h-full w-full flex-col justify-center rounded-r-[10px] bg-white px-4 py-2 text-[0.93rem] font-medium
+        className={`flex h-full w-full flex-col justify-center items-start rounded-r-[10px] bg-white px-4 py-2 text-[0.93rem] font-medium
 				after:absolute after:bottom-0
 				after:right-4 after:top-[5px] after:m-auto after:h-0 after:w-0 after:border-[5px] after:border-transparent after:border-t-[#9ea9b7] focus:shadow-[0_0_0_2px_#ff521f]
 				focus:outline-none ${showDropdown ? 'after:-translate-y-1 after:rotate-180' : ''}`}
