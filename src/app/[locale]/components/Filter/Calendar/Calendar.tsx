@@ -16,6 +16,26 @@ import handlerClickDay from './helpers/handlerClickDay';
 import '@uvarov.frontend/vanilla-calendar/build/vanilla-calendar.min.css';
 import './Calendar.css';
 
+function useWindowDimensions() {
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  const updateWidthAndHeight = () => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', updateWidthAndHeight);
+    return () => window.removeEventListener('resize', updateWidthAndHeight);
+  });
+
+  return {
+    width,
+    height,
+  };
+}
+
 export default function Calendar({
   locale,
   placeholderStart,
@@ -36,6 +56,7 @@ export default function Calendar({
   const [calendar, setCalendar] = useState<VanillaCalendar<HTMLElement, Options> | null>(null);
   const [initDateMin, setInitDateMin] = useState<Date | null>(null);
   const calendarEl = useRef<HTMLDivElement | null>(null);
+  const { width, height } = useWindowDimensions();
 
   useEffect(() => {
     if (!calendarEl.current || calendar) return;
@@ -103,6 +124,24 @@ export default function Calendar({
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calendar?.HTMLElement]);
+
+  useEffect(() => {
+    if (!calendar) return;
+
+    const { HTMLInputElement, HTMLElement } = calendar;
+
+    if (!HTMLInputElement || !HTMLElement) return;
+
+    let top = HTMLInputElement.offsetHeight;
+    let left = 0;
+
+    for (let el: HTMLElement | null = HTMLInputElement; el; el = el.offsetParent as HTMLElement) {
+      top += el.offsetTop || 0;
+      left += el.offsetLeft || 0;
+    }
+
+    Object.assign(HTMLElement.style, { left: `${left}px`, top: `${top}px` });
+  }, [calendar, width, height]);
 
   return (
     <div ref={calendarEl} className="pointer-events-none relative grid h-full grid-cols-2 gap-[2px]">
