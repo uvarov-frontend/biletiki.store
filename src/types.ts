@@ -13,6 +13,12 @@ export interface IProps {
   params: IParams;
 }
 
+export interface ITitles {
+  btn: string | false,
+  start: string,
+  end: string,
+}
+
 export interface ILevels {
   title: string;
   data: ILevel[];

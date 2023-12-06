@@ -1,8 +1,8 @@
 'use client';
 
-import VanillaCalendarClasses from '@uvarov.frontend/vanilla-calendar/src/classes';
 import { notFound } from 'next/navigation';
 import { useState } from 'react';
+import VanillaCalendarClasses from 'vanilla-calendar-pro/classes';
 
 import { categories } from '@/bd';
 import { ICategoryFilter, Locale } from '@/types';

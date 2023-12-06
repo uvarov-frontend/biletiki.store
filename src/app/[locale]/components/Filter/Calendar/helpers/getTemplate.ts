@@ -1,13 +1,15 @@
+import { ITitles } from '@/types';
+
 const btnTemplate = (isDates: boolean, titleBtn: string | false) => `
 	<button type="button"
 		class="vanilla-calendar-info__btn ${isDates ? 'vanilla-calendar-info__btn_active' : '' }"
 		data-custom-btn-calendar="close">${titleBtn}</button>
 `;
 
-const DOMTemplate = (isEndDate: boolean, isDates: boolean, titleStart: string, titleEnd: string, titleBtn: string | false) => `
+const getTemplate = (isEndDate: boolean, isDates: boolean, titles: ITitles) => `
 	<div class="vanilla-calendar-info">
-		<b class="vanilla-calendar-info__title">${isEndDate ? titleEnd : titleStart}</b>
-		${titleBtn ? btnTemplate(isDates, titleBtn) : ''}
+		<b class="vanilla-calendar-info__title">${isEndDate ? titles.end : titles.start}</b>
+		${titles.btn ? btnTemplate(isDates, titles.btn) : ''}
 	</div>
 	<div class="vanilla-calendar-datepicker">
 		<div class="vanilla-calendar-controls">
@@ -36,4 +38,4 @@ const DOMTemplate = (isEndDate: boolean, isDates: boolean, titleStart: string, t
 	</div>
 `;
 
-export default DOMTemplate;
+export default getTemplate;

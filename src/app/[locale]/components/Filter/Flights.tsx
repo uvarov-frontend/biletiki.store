@@ -1,11 +1,17 @@
 import { FlightLevels, FlightPeoples } from '@/bd';
-import { ICategory, Locale } from '@/types';
+import { ICategory, ITitles, Locale } from '@/types';
 
 import Calendar from './Calendar/Calendar';
 import Dropdown from './Dropdown/Dropdown';
 import Input from './Input';
 
 export default function FilterFlights({ activeCategory, locale }: { activeCategory: ICategory; locale: Locale }) {
+  const titles: ITitles = {
+    btn: activeCategory.calendar.title.btn,
+    end: activeCategory.calendar.title.end,
+    start: activeCategory.calendar.title.start,
+  };
+
   return (
     <form
       className="mt-12 grid h-[3.75rem] grid-cols-[1fr_auto] items-center justify-start gap-[10px]
@@ -19,9 +25,7 @@ export default function FilterFlights({ activeCategory, locale }: { activeCatego
           locale={locale}
           placeholderEnd={activeCategory.calendar.placeholder.end}
           placeholderStart={activeCategory.calendar.placeholder.start}
-          titleBtn={activeCategory.calendar.title.btn}
-          titleEnd={activeCategory.calendar.title.end}
-          titleStart={activeCategory.calendar.title.start}
+          titles={titles}
         />
         <Dropdown levels={FlightLevels.locales[locale]} peoples={FlightPeoples.locales[locale]} placeholder={activeCategory.dropdown.placeholder} />
       </div>

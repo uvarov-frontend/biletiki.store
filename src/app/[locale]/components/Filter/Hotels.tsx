@@ -1,11 +1,17 @@
 import { HotelPeoples } from '@/bd';
-import { ICategory, Locale } from '@/types';
+import { ICategory, ITitles, Locale } from '@/types';
 
 import Calendar from './Calendar/Calendar';
 import Dropdown from './Dropdown/Dropdown';
 import Input from './Input';
 
 export default function FilterHotels({ activeCategory, locale }: { activeCategory: ICategory; locale: Locale }) {
+  const titles: ITitles = {
+    btn: false,
+    end: activeCategory.calendar.title.end,
+    start: activeCategory.calendar.title.start,
+  };
+
   return (
     <form
       key={activeCategory.id}
@@ -19,9 +25,7 @@ export default function FilterHotels({ activeCategory, locale }: { activeCategor
           locale={locale}
           placeholderEnd={activeCategory.calendar.placeholder.end}
           placeholderStart={activeCategory.calendar.placeholder.start}
-          titleBtn={false}
-          titleEnd={activeCategory.calendar.title.end}
-          titleStart={activeCategory.calendar.title.start}
+          titles={titles}
         />
         <Dropdown peoples={HotelPeoples.locales[locale]} placeholder={activeCategory.dropdown.placeholder} />
       </div>

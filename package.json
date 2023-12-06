@@ -23,11 +23,11 @@
     "format": "prettier --write **/*.{ts,tsx,js,css}"
   },
   "dependencies": {
-    "@uvarov.frontend/vanilla-calendar": "^2.7.0",
     "next": "13.5.4",
     "next-intl": "3.0.0-rc.6",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "vanilla-calendar-pro": "^2.9.0"
   },
   "devDependencies": {
     "@types/node": "^20",
