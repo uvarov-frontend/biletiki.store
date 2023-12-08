@@ -31,7 +31,7 @@ const clearInput = (
     'date-start': () => {
 			calendar.DOMTemplates.multiple = getTemplate(false, false, titles);
 			calendar.settings.range.min = dateMinStr;
-			calendar.update({ dates: 'reset-all' });
+			calendar.update({ dates: true });
 			inputStart.value = '';
 			inputEnd.value = '';
 			setVisibilityStart(false);

@@ -27,7 +27,7 @@
     "next-intl": "3.0.0-rc.6",
     "react": "^18",
     "react-dom": "^18",
-    "vanilla-calendar-pro": "^2.9.0"
+    "vanilla-calendar-pro": "^2.9.1"
   },
   "devDependencies": {
     "@types/node": "^20",
