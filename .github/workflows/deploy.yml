@@ -28,6 +28,7 @@ jobs:
           script: |
             pm2 stop biletiki
             cd ${{ secrets.TARGET }}
+            rm -rf .next
             yarn install
             yarn build
             pm2 start biletiki
