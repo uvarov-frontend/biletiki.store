@@ -21,6 +21,7 @@ const getOptions = (locale: string, date: FormatDateString, template: string): O
     visibility: {
       theme: 'light',
       daysOutside: false,
+      positionToInput: 'center',
     },
   },
   DOMTemplates: {

@@ -1,5 +1,5 @@
 .vanilla-calendar {
-  @apply w-[772px] max-w-none -translate-x-1/4 rounded-[5px] bg-white px-5 py-6 font-[-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif] text-[#0c131d] shadow-[0_6px_9px_rgba(0,0,0,0.08)];
+  @apply w-[772px] max-w-none rounded-[5px] bg-white px-5 py-6 font-[-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif] text-[#0c131d] shadow-[0_6px_9px_rgba(0,0,0,0.08)];
 }
 
 .vanilla-calendar_hidden * {

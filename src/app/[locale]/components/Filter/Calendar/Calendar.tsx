@@ -35,6 +35,20 @@ export default function Calendar({
   const calendarEl = useRef<HTMLDivElement | null>(null);
   const dateMinStr = getDateString(new Date());
 
+  const clickDay = (_: MouseEvent, self: VanillaCalendar) => {
+    if (!inputStartEl || !inputEndEl) return;
+
+    inputStartEl.value = formatInputDate(self.selectedDates[0], locale);
+    inputEndEl.value = self.selectedDates.length > 1 ? formatInputDate(self.selectedDates[self.selectedDates.length - 1], locale) : '';
+
+    setVisibilityStart(inputStartEl.value.length > 0);
+    setVisibilityEnd(inputEndEl.value.length > 0);
+
+    self.settings.range.min = self.selectedDates.length === 1 ? self.selectedDates[0] : dateMinStr;
+    self.DOMTemplates.multiple = getTemplate(self.selectedDates.length === 1, self.selectedDates.length >= 1, titles);
+    self.update();
+  };
+
   useEffect(() => {
     if (!calendarEl.current) return;
     setInputStartEl(calendarEl.current.querySelector('input[name="date-start"]') as HTMLInputElement | null);
@@ -48,26 +62,12 @@ export default function Calendar({
 
     setCalendar(new VanillaCalendar(calendarEl.current, {
       actions: {
-        clickDay: (_, self) => {
-          inputStartEl.value = formatInputDate(self.selectedDates[0], locale);
-          inputEndEl.value = self.selectedDates.length > 1 ? formatInputDate(self.selectedDates[self.selectedDates.length - 1], locale) : '';
-          setVisibilityStart(inputStartEl.value.length > 0);
-          setVisibilityEnd(inputEndEl.value.length > 0);
-          self.DOMTemplates.multiple = getTemplate(self.selectedDates.length === 1, self.selectedDates.length >= 1, titles);
-
-          if(self.selectedDates.length === 1) {
-            // eslint-disable-next-line prefer-destructuring
-            self.settings.range.min = self.selectedDates[0];
-          } else {
-            self.settings.range.min = dateMinStr;
-          }
-          self.update();
-        },
+        clickDay,
       },
       ...getOptions(locale, getDateString(dateMax), getTemplate(false, false, titles)),
     }));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [calendarEl, inputStartEl, inputEndEl]);
+  }, [inputStartEl, inputEndEl]);
 
   useEffect(() => {
     if (!calendar || calendar.isInit) return;
