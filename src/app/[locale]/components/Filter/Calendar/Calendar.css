@@ -81,12 +81,21 @@
   @apply -rotate-90;
 }
 
+.vanilla-calendar-day_hover-intermediate .vanilla-calendar-day__btn_hover {
+  @apply bg-[#e8f4ff] text-[#0c131d]
+}
+
+.vanilla-calendar-day_hover-first .vanilla-calendar-day__btn_hover,
+.vanilla-calendar-day_hover-last .vanilla-calendar-day__btn_hover {
+  @apply bg-[#0c73fe] text-white;
+}
+
 .vanilla-calendar-day__btn {
   @apply h-[50px] rounded-lg text-[15px] text-[#0c131d] hover:bg-[#e8f4ff];
 }
 
 .vanilla-calendar-day__btn_hover {
-  @apply rounded-none bg-[#e8f4ff] hover:rounded-lg hover:bg-[#0c73fe] hover:text-white;
+  @apply hover:bg-[#0c73fe] hover:text-white;
 }
 
 .vanilla-calendar-day__btn_disabled,
@@ -104,11 +113,6 @@
 
 .vanilla-calendar-day_selected-intermediate .vanilla-calendar-day__btn_selected {
   @apply rounded-none bg-[#e8f4ff] text-[#0c131d] hover:rounded-lg hover:bg-[#0656fe] hover:text-white;
-}
-
-.vanilla-calendar-day_selected-first .vanilla-calendar-day__btn_selected,
-.vanilla-calendar-day_selected-last .vanilla-calendar-day__btn_selected {
-  @apply rounded-lg;
 }
 
 .vanilla-calendar-week {
